@@ -1,6 +1,5 @@
 const container = document.querySelector('#container');
 const btn = document.querySelector('#btn-gridChange button')
-let squares;
 
 createGrid(16);
 
@@ -25,16 +24,18 @@ function createGrid(numberOfGrids){
     
     }
 
-    squares = document.querySelectorAll('.column div');
+    let squares = document.querySelectorAll('.column div');
+
+    squares.forEach(square => {
+        square.addEventListener('mouseenter', (event) => colorSquare(event, 'red'));
+    });
 }
 
 function colorSquare(event, color){
     event.target.style.backgroundColor = color;
 }
 
-squares.forEach(square => {
-    square.addEventListener('mouseenter', (event) => colorSquare(event, 'red'));
-});
+
 
 btn.addEventListener('click', () => {
     let numberOfGrids = +prompt('What number of grids do you want?');
