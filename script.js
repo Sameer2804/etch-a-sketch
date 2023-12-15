@@ -1,17 +1,46 @@
 const container = document.querySelector('#container');
-for(let i=0; i< 16; i++){
-    const row = document.createElement('div');
-    row.setAttribute('class', 'row');
-    container.appendChild(row);
-    
-    for(let j=0; j<16; j++){
-        const square = document.createElement('div');
-        square.style.border = 'solid'
-        square.style.width = '40px';
-        square.style.height = '40px';
-        row.appendChild(square);
-    }
-    
+const btn = document.querySelector('#btn-gridChange button')
+let squares;
+
+createGrid(16);
+
+function removeGrid(){
+    const columns = document.querySelectorAll('.column')
+    columns.forEach(column => {
+        container.removeChild(column);
+    })
 }
 
-console.log(container.childElementCount);
+function createGrid(numberOfGrids){
+
+    for(let i=0; i< numberOfGrids; i++){
+        const column = document.createElement('div');
+        column.setAttribute('class', 'column');
+        container.appendChild(column);
+        
+        for(let j=0; j< numberOfGrids; j++){
+            const square = document.createElement('div');
+            column.appendChild(square);
+        }
+    
+    }
+
+    squares = document.querySelectorAll('.column div');
+}
+
+function colorSquare(event, color){
+    event.target.style.backgroundColor = color;
+}
+
+squares.forEach(square => {
+    square.addEventListener('mouseenter', (event) => colorSquare(event, 'red'));
+});
+
+btn.addEventListener('click', () => {
+    let numberOfGrids = +prompt('What number of grids do you want?');
+    removeGrid();
+    createGrid(numberOfGrids);
+})
+
+
+
