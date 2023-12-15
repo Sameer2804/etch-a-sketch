@@ -35,10 +35,12 @@ function colorSquare(event, color){
     event.target.style.backgroundColor = color;
 }
 
-
-
 btn.addEventListener('click', () => {
-    let numberOfGrids = +prompt('What number of grids do you want?');
+    let numberOfGrids = -1;
+    while(numberOfGrids < 0 || numberOfGrids > 100){
+        numberOfGrids = +prompt('What number of grids do you want? < 100');
+    }
+
     removeGrid();
     createGrid(numberOfGrids);
 })
