@@ -11,6 +11,11 @@ function removeGrid(){
     })
 }
 
+function randomRGBValue(){
+   return Math.floor(Math.random() * 256); 
+}
+
+
 function createGrid(numberOfGrids){
 
     for(let i=0; i< numberOfGrids; i++){
@@ -28,7 +33,7 @@ function createGrid(numberOfGrids){
     let squares = document.querySelectorAll('.column div');
 
     squares.forEach(square => {
-        square.addEventListener('mouseenter', (event) => colorSquare(event, 'red'));
+        square.addEventListener('mouseenter', (event) => colorSquare(event, randomRGBValue(), randomRGBValue(), randomRGBValue()));
 
         btnClear.addEventListener('click', (event) => {
             square.style.backgroundColor = 'white';
@@ -36,8 +41,8 @@ function createGrid(numberOfGrids){
     });
 }
 
-function colorSquare(event, color){
-    event.target.style.backgroundColor = color;
+function colorSquare(event, r, g, b){
+    event.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 }
 
 btn.addEventListener('click', () => {
