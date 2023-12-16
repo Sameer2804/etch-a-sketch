@@ -36,13 +36,15 @@ function createGrid(numberOfGrids){
         square.addEventListener('mouseenter', (event) => colorSquare(event, randomRGBValue(), randomRGBValue(), randomRGBValue()));
 
         btnClear.addEventListener('click', (event) => {
-            square.style.backgroundColor = 'white';
+            square.style.backgroundColor = '';
         })
     });
 }
 
 function colorSquare(event, r, g, b){
-    event.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    if(event.target.style.backgroundColor == ''){
+        event.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    }
 }
 
 btn.addEventListener('click', () => {
