@@ -35,7 +35,7 @@ function createGrid(numberOfGrids){
     squares.forEach(square => {
         square.addEventListener('mouseenter', (event) => colorSquare(event, randomRGBValue(), randomRGBValue(), randomRGBValue()));
 
-        btnClear.addEventListener('click', (event) => {
+        btnClear.addEventListener('click', () => {
             square.style.backgroundColor = '';
         })
     });
